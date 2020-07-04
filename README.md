@@ -1,19 +1,17 @@
 # world-soccer-highlights
 
 ## ローカル環境での実行
-```bash
-$ firebase emulators:start --project=default --inspect-functions --only functions,hosting
-```
+### Webアプリ
 ```bash
 $ npm start --prefix web
 ```
 
-## ステージング環境へのデプロイ
+### 定期実行処理
 ```bash
-$ firebase deploy --project=default
+$ firebase emulators:start --inspect-functions --only functions
 ```
 
-## 本番環境へのデプロイ
+## デプロイ
 ```bash
-$ firebase deploy --project=prod
+$ firebase deploy
 ```
