@@ -22,12 +22,18 @@ const Videos = () => {
 
   const loader = <div>Loading...</div>;
   return (
-    <div className="uk-text-center">
+    <div>
       <InfiniteScroll pageStart={0} initialLoad={false} loadMore={(page) => setPageNum(page)} hasMore={videos.length > videosToShow.length} loader={loader}>
         {videosToShow.map((video) =>
         <div key={video.id.videoId} className="video">
           <YouTube videoId={video.id.videoId} className="youtube" containerClassName="youtube-container" />
-          <div>Unwatched - {moment(video.publishedAt.toDate()).fromNow()}</div>
+          <div className="uk-flex uk-padding-small">
+            <img src={`${video.country}.png`} className="country-icon" />
+            <div className="uk-flex-1 uk-margin-small-left">
+              <div className="uk-text-small uk-text-top">{video.snippet.title}</div>
+              <div className="uk-text-right uk-text-small uk-text-muted">{moment(video.publishedAt.toDate()).fromNow()}</div>
+            </div>
+          </div>
         </div>
         )}
       </InfiniteScroll>
