@@ -37,7 +37,7 @@ const Videos = () => {
       <InfiniteScroll pageStart={0} initialLoad={false} loadMore={(page) => setPageNum(page)} hasMore={videos.length > videosToShow.length} loader={loader}>
         {videosToShow.map((video) =>
         <div key={video.id.videoId} className={`video ${watchedVideoIds.includes(video.id.videoId) ? 'watched' : ''}`}>
-          <YouTube videoId={video.id.videoId} className="youtube" containerClassName="youtube-container" onPlay={() => onPlay(video.id.videoId)} />
+          <YouTube videoId={video.id.videoId} className="youtube" containerClassName="youtube-container" onPlay={() => onPlay(video.id.videoId)} onError={() => onPlay(video.id.videoId)} />
           <div className="uk-flex uk-padding-small">
             <img src={`${video.country}.png`} className="country-icon" />
             <div className="uk-flex-1 uk-margin-small-left">
