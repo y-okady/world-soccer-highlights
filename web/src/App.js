@@ -4,7 +4,7 @@ import './App.css';
 
 const App = () =>
   <>
-    <h3 className="uk-padding-small uk-margin-remove">World Soccer Highlights</h3>
+    <h3 className="uk-padding-small uk-margin-remove logo">World Soccer Highlights</h3>
     <Videos />
   </>
 

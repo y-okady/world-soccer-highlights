@@ -4,8 +4,6 @@ import App from './App';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/analytics';
-import UIkit from 'uikit';
-import Icons from 'uikit/dist/js/uikit-icons';
 import 'uikit/dist/css/uikit.min.css';
 
 firebase.initializeApp({
@@ -19,7 +17,6 @@ firebase.initializeApp({
   measurementId: "G-Z6XTDCH3GQ"
 });
 firebase.analytics();
-UIkit.use(Icons);
 
 ReactDOM.render(
   <React.StrictMode>
