@@ -4,6 +4,10 @@
   background-color: whitesmoke;
 }
 
+.video.watched {
+  background-color: darkgrey;
+}
+
 .youtube-container {
   position: relative;
   width: 100%;
