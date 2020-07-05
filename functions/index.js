@@ -8,7 +8,7 @@ firebaseAdmin.initializeApp();
 const countries = {
   'JAPAN': [{
     channelId: 'UCWc-XpFHPK1SwGcvpFPZ8NA',
-    filter: (title) => title.startsWith('【公式】ハイライト：'),
+    filter: (title) => title.startsWith('【公式】ハイライト：') && title.includes('Ｊ１リーグ'),
   }],
   'SPAIN': [{
     channelId: 'UCTv-XvfzLX3i4IGWAm4sbmA',
@@ -53,9 +53,17 @@ const countries = {
   ],
 };
 
-exports.syncVideos = functions.pubsub.schedule('every 60 minutes').onRun((context) => {
-  const publishedAfter = moment().subtract(90, 'minutes').toISOString();
-  return Promise.all(Object.keys(countries).map((key) => syncVideosByCountry(key, publishedAfter)));
+exports.syncVideos = functions.pubsub.schedule('every 120 minutes').onRun(async (context) => {
+  const publishedAfter = moment().subtract(150, 'minutes').toISOString();
+  await Promise.all(Object.keys(countries).map((key) => syncVideosByCountry(key, publishedAfter)));
+
+  await firebaseAdmin.firestore().collection('videos').where('publishedAt', '<', moment().subtract(2, 'weeks').toDate()).get().then((querySnapshot) => {
+    const batch = firebaseAdmin.firestore().batch();
+    querySnapshot.forEach((doc) => {
+      batch.delete(doc.ref);
+    });
+    return batch.commit();
+  });
 });
 
 const syncVideosByCountry = (key, publishedAfter) =>
