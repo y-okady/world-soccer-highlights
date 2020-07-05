@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "firebase": "^7.15.5",
+    "moment": "^2.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-infinite-scroller": "^1.2.4",
     "react-scripts": "3.4.1",
+    "react-youtube": "^7.11.2",
     "uikit": "^3.5.4"
   },
   "scripts": {

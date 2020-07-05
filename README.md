@@ -10,6 +10,10 @@ $ npm start --prefix web
 ```bash
 $ firebase emulators:start --inspect-functions --only functions
 ```
+```bash
+$ GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/serviceAccount.json firebase functions:shell --port=5002
+firebase > syncVideos()
+```
 
 ## デプロイ
 ```bash
