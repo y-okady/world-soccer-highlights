@@ -41,7 +41,7 @@ const Videos = () => {
           <div className="uk-flex uk-padding-small">
             <img src={`${video.country}.png`} className="country-icon" />
             <div className="uk-flex-1 uk-margin-small-left">
-              <div className="uk-text-small uk-text-top">{video.snippet.title}</div>
+              <div className="uk-text-small uk-text-top" dangerouslySetInnerHTML={{ __html: video.snippet.title}} />
               <div className="uk-text-right uk-text-small uk-text-light uk-margin-small-top">{moment(video.publishedAt.toDate()).fromNow()}</div>
             </div>
           </div>
